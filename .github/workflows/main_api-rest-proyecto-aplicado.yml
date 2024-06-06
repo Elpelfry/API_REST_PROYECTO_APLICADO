@@ -26,8 +26,8 @@ jobs:
         run: dotnet build --configuration Release
         working-directory: API_PROYECTO_APLICADO
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: dotnet publish project
+        run: dotnet publish API_PROYECTO_APLICADO.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
         working-directory: API_PROYECTO_APLICADO
 
       - name: Upload artifact for deployment job
