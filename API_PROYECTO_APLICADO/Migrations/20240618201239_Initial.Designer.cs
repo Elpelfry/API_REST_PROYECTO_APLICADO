@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_PROYECTO_APLICADO.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240618191120_Initial")]
+    [Migration("20240618201239_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -151,9 +151,15 @@ namespace API_PROYECTO_APLICADO.Migrations
             modelBuilder.Entity("Shared.Models.DetalleAsignaturas", b =>
                 {
                     b.Property<int>("DetalleAsignaturaId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DetalleAsignaturaId"));
+
                     b.Property<int>("AsignaturaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AsignaturasAsignaturaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Aula")
@@ -176,13 +182,18 @@ namespace API_PROYECTO_APLICADO.Migrations
 
                     b.HasKey("DetalleAsignaturaId");
 
+                    b.HasIndex("AsignaturasAsignaturaId");
+
                     b.ToTable("DetalleAsignaturas");
                 });
 
             modelBuilder.Entity("Shared.Models.DetalleSeleccionAsignatura", b =>
                 {
                     b.Property<int>("DetalleSeleccionAsignaturaId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DetalleSeleccionAsignaturaId"));
 
                     b.Property<int>("AsignaturaId")
                         .HasColumnType("int");
@@ -193,7 +204,12 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<int>("SeleccionAsignaturaId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SeleccionAsignaturasSeleccionAsignaturaId")
+                        .HasColumnType("int");
+
                     b.HasKey("DetalleSeleccionAsignaturaId");
+
+                    b.HasIndex("SeleccionAsignaturasSeleccionAsignaturaId");
 
                     b.ToTable("DetalleSeleccionAsignatura");
                 });
@@ -551,18 +567,14 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     b.HasOne("Shared.Models.Asignaturas", null)
                         .WithMany("DetalleAsignaturas")
-                        .HasForeignKey("DetalleAsignaturaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AsignaturasAsignaturaId");
                 });
 
             modelBuilder.Entity("Shared.Models.DetalleSeleccionAsignatura", b =>
                 {
                     b.HasOne("Shared.Models.SeleccionAsignaturas", null)
                         .WithMany("DetalleSeleccionAsignaturas")
-                        .HasForeignKey("DetalleSeleccionAsignaturaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SeleccionAsignaturasSeleccionAsignaturaId");
                 });
 
             modelBuilder.Entity("Shared.Models.Asignaturas", b =>

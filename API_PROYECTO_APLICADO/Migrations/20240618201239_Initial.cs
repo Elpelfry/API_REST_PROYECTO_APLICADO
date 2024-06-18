@@ -237,44 +237,46 @@ namespace API_PROYECTO_APLICADO.Migrations
                 name: "DetalleAsignaturas",
                 columns: table => new
                 {
-                    DetalleAsignaturaId = table.Column<int>(type: "int", nullable: false),
+                    DetalleAsignaturaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AsignaturaId = table.Column<int>(type: "int", nullable: false),
                     DiaId = table.Column<int>(type: "int", nullable: false),
                     HoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HoraFin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Aula = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Edificio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AsignaturasAsignaturaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetalleAsignaturas", x => x.DetalleAsignaturaId);
                     table.ForeignKey(
-                        name: "FK_DetalleAsignaturas_Asignaturas_DetalleAsignaturaId",
-                        column: x => x.DetalleAsignaturaId,
+                        name: "FK_DetalleAsignaturas_Asignaturas_AsignaturasAsignaturaId",
+                        column: x => x.AsignaturasAsignaturaId,
                         principalTable: "Asignaturas",
-                        principalColumn: "AsignaturaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AsignaturaId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "DetalleSeleccionAsignatura",
                 columns: table => new
                 {
-                    DetalleSeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false),
+                    DetalleSeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false),
                     AsignaturaId = table.Column<int>(type: "int", nullable: false),
-                    CantidadCreditos = table.Column<int>(type: "int", nullable: false)
+                    CantidadCreditos = table.Column<int>(type: "int", nullable: false),
+                    SeleccionAsignaturasSeleccionAsignaturaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetalleSeleccionAsignatura", x => x.DetalleSeleccionAsignaturaId);
                     table.ForeignKey(
-                        name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_DetalleSeleccionAsignaturaId",
-                        column: x => x.DetalleSeleccionAsignaturaId,
+                        name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_SeleccionAsignaturasSeleccionAsignaturaId",
+                        column: x => x.SeleccionAsignaturasSeleccionAsignaturaId,
                         principalTable: "SeleccionAsignaturas",
-                        principalColumn: "SeleccionAsignaturaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "SeleccionAsignaturaId");
                 });
 
             migrationBuilder.InsertData(
@@ -320,6 +322,16 @@ namespace API_PROYECTO_APLICADO.Migrations
                     { 1, "Laboratorio" },
                     { 2, "Proyector" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleAsignaturas_AsignaturasAsignaturaId",
+                table: "DetalleAsignaturas",
+                column: "AsignaturasAsignaturaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleSeleccionAsignatura_SeleccionAsignaturasSeleccionAsignaturaId",
+                table: "DetalleSeleccionAsignatura",
+                column: "SeleccionAsignaturasSeleccionAsignaturaId");
         }
 
         /// <inheritdoc />
