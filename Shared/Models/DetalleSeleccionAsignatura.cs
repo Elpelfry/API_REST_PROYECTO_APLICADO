@@ -14,7 +14,5 @@ public class DetalleSeleccionAsignatura
     [ForeignKey("Asignaturas")]
     public int AsignaturaId { get; set; }
 
-    [Required(ErrorMessage = "Valor de calificacion es requerido")]
-    [Range(0, 100, ErrorMessage = "Valor de calificacion debe estar entre 0 y 100")]
     public int CantidadCreditos { get; set; }
 }

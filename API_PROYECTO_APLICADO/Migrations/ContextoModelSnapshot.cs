@@ -31,7 +31,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdmisioneId"));
 
                     b.Property<byte[]>("ActaNacimiento")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<int>("CarreraId")
@@ -41,65 +40,51 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("CertificadoBachiller")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<byte[]>("CertificadoMedico")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("CiudadNacimiento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronico")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EstadoAdmicionId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaNacimiento")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<byte[]>("Fotografia")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("LugarNacimiento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombres")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrimerApellido")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("RecordNotas")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SegundoApellido")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Tarjetavacunacion")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelefonoCasa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AdmisioneId");
@@ -119,7 +104,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CodigoMateria")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Creditos")
@@ -129,14 +113,12 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("NombreMateria")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("PrecioCredito")
                         .HasColumnType("float");
 
                     b.Property<string>("Seccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UsuarioId")
@@ -156,7 +138,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarreraId"));
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CarreraId");
@@ -173,7 +154,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Aula")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Comentario")
@@ -183,7 +163,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Edificio")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("HoraFin")
@@ -225,7 +204,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiaId"));
 
                     b.Property<string>("NombreDia")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DiaId");
@@ -279,7 +257,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstadoAdmisionId"));
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EstadoAdmisionId");
@@ -316,15 +293,12 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("FechaEmision")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaVencimiento")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<double?>("Monto")
-                        .IsRequired()
                         .HasColumnType("float");
 
                     b.Property<string>("Nota")
@@ -350,7 +324,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservacionId"));
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Estado")
@@ -379,7 +352,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RolId"));
 
                     b.Property<string>("RolName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RolId");
@@ -458,23 +430,18 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("FechaFin")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaFinSeleccion")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaInicio")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaInicioSeleccion")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SemestreId");
@@ -491,7 +458,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoReservacioneId"));
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TipoReservacioneId");
@@ -523,7 +489,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Apellidos")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CarreraId")
@@ -533,58 +498,45 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Contrasena")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronicoInstitucional")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronicoPersonal")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FechaEgreso")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaIngreso")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaNacimiento")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<byte[]>("FotoUsuario")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Matricula")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreUsuario")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombres")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RolId")
                         .HasColumnType("int");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelefonoCasa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UsuarioId");

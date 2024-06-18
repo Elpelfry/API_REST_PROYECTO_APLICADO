@@ -14,10 +14,8 @@ public class Reservaciones
     [ForeignKey("Usuarios")]
     public int UsuarioId { get; set; }
 
-    [Required(ErrorMessage = "El campo fecha es requerido")]
     public DateTime Fecha { get; set; }
 
-    [Required(ErrorMessage = "El campo descripcion es requerido")]
     public string? Descripcion { get; set; }
 
     public bool Estado { get; set; }

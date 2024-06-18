@@ -14,13 +14,10 @@ public class Facturaciones
     [ForeignKey("Usuarios")]
     public int UsuarioId { get; set; }
 
-    [Required(ErrorMessage = "Es obligatorio introducir la fecha de Emision")]
     public DateTime? FechaEmision { get; set; }
 
-    [Required(ErrorMessage = "Es obligatorio introducir la fecha de Vencimiento")]
     public DateTime? FechaVencimiento { get; set; }
 
-    [Required(ErrorMessage = "Es obligatorio introducir el monto")]
     public double? Monto { get; set; }
 
     public bool Estado { get; set; }

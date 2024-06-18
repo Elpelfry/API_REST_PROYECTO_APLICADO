@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API_PROYECTO_APLICADO.Migrations
 {
     /// <inheritdoc />
-    public partial class INITIAL : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,24 +19,24 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     AdmisioneId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombres = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrimerApellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SegundoApellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nombres = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrimerApellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SegundoApellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LugarNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CiudadNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TelefonoCasa = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LugarNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CiudadNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TelefonoCasa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CarreraId = table.Column<int>(type: "int", nullable: false),
-                    RecordNotas = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    ActaNacimiento = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    CertificadoMedico = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    CertificadoBachiller = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    Fotografia = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    RecordNotas = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ActaNacimiento = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    CertificadoMedico = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    CertificadoBachiller = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Fotografia = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Tarjetavacunacion = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EstadoAdmicionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -51,11 +51,11 @@ namespace API_PROYECTO_APLICADO.Migrations
                     AsignaturaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    CodigoMateria = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NombreMateria = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CodigoMateria = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreMateria = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Creditos = table.Column<int>(type: "int", nullable: false),
                     PrecioCredito = table.Column<double>(type: "float", nullable: false),
-                    Seccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Seccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CantidadEstudiantes = table.Column<int>(type: "int", nullable: false),
                     EsLaboratorio = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -70,7 +70,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     CarreraId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,7 +83,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     DiaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreDia = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NombreDia = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -96,7 +96,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     EstadoAdmisionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,9 +111,9 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SemestreId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    FechaEmision = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Monto = table.Column<double>(type: "float", nullable: false),
+                    FechaEmision = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Monto = table.Column<double>(type: "float", nullable: true),
                     Estado = table.Column<bool>(type: "bit", nullable: false),
                     Nota = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -131,7 +131,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                     TipoReservacioneId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -145,7 +145,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     RolId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RolName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RolName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -177,13 +177,13 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     SemestreId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaFin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaFin = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Estado = table.Column<bool>(type: "bit", nullable: false),
                     CargoInscripcion = table.Column<double>(type: "float", nullable: false),
-                    FechaInicioSeleccion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaFinSeleccion = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FechaInicioSeleccion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaFinSeleccion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -196,7 +196,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     TipoReservacioneId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -212,21 +212,21 @@ namespace API_PROYECTO_APLICADO.Migrations
                     RolId = table.Column<int>(type: "int", nullable: false),
                     CarreraId = table.Column<int>(type: "int", nullable: false),
                     AdmisionId = table.Column<int>(type: "int", nullable: false),
-                    Nombres = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CorreoElectronicoPersonal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CorreoElectronicoInstitucional = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TelefonoCasa = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Matricula = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nombres = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CorreoElectronicoPersonal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorreoElectronicoInstitucional = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TelefonoCasa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Matricula = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaIngreso = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaEgreso = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FotoUsuario = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaIngreso = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaEgreso = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FotoUsuario = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -242,8 +242,8 @@ namespace API_PROYECTO_APLICADO.Migrations
                     DiaId = table.Column<int>(type: "int", nullable: false),
                     HoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HoraFin = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Aula = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Edificio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Aula = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Edificio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Comentario = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

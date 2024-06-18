@@ -15,20 +15,14 @@ public class SeleccionAsignaturas
     [ForeignKey("Semestres")]
     public int SemestreId { get; set; }
 
-    [Required(ErrorMessage ="Fecha de seleccion es requerido")]
     public DateTime FechaSeleccion { get; set; }
 
     public bool Estado { get; set; }
 
-    [Required(ErrorMessage = "Cantidad de creditos permitidos es requerido")]
-    [Range(1, 25, ErrorMessage = "Cantidad de creditos permitidos debe ser entre 1 y 25")]
     public int CantidadCreditosPermitidos { get; set; }
 
-    [Required(ErrorMessage = "Cantidad de creditos seleccionados es requerido")]
-    [Range(1, 25, ErrorMessage = "Cantidad de creditos permitidos debe ser entre 1 y 25")]
     public int CantidadCreditosSeleccionados { get; set; }
 
-    [Required(ErrorMessage = "Cantidad de asignaturas es requerido")]
     public int CantidadAsignaturasSeleccionadas { get; set; }
 
     [ForeignKey("DetalleSeleccionAsignaturaId")]
