@@ -24,6 +24,6 @@ public class SeleccionAsignaturas
     public int CantidadCreditosSeleccionados { get; set; }
 
     public int CantidadAsignaturasSeleccionadas { get; set; }
-
+    [ForeignKey("SeleccionAsignaturaId")]
     public ICollection<DetalleSeleccionAsignatura> DetalleSeleccionAsignaturas { get; set; } = new List<DetalleSeleccionAsignatura>();
 }

@@ -245,17 +245,17 @@ namespace API_PROYECTO_APLICADO.Migrations
                     HoraFin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Aula = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Edificio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AsignaturasAsignaturaId = table.Column<int>(type: "int", nullable: true)
+                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetalleAsignaturas", x => x.DetalleAsignaturaId);
                     table.ForeignKey(
-                        name: "FK_DetalleAsignaturas_Asignaturas_AsignaturasAsignaturaId",
-                        column: x => x.AsignaturasAsignaturaId,
+                        name: "FK_DetalleAsignaturas_Asignaturas_AsignaturaId",
+                        column: x => x.AsignaturaId,
                         principalTable: "Asignaturas",
-                        principalColumn: "AsignaturaId");
+                        principalColumn: "AsignaturaId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -266,17 +266,17 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false),
                     AsignaturaId = table.Column<int>(type: "int", nullable: false),
-                    CantidadCreditos = table.Column<int>(type: "int", nullable: false),
-                    SeleccionAsignaturasSeleccionAsignaturaId = table.Column<int>(type: "int", nullable: true)
+                    CantidadCreditos = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetalleSeleccionAsignatura", x => x.DetalleSeleccionAsignaturaId);
                     table.ForeignKey(
-                        name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_SeleccionAsignaturasSeleccionAsignaturaId",
-                        column: x => x.SeleccionAsignaturasSeleccionAsignaturaId,
+                        name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_SeleccionAsignaturaId",
+                        column: x => x.SeleccionAsignaturaId,
                         principalTable: "SeleccionAsignaturas",
-                        principalColumn: "SeleccionAsignaturaId");
+                        principalColumn: "SeleccionAsignaturaId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -324,14 +324,14 @@ namespace API_PROYECTO_APLICADO.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleAsignaturas_AsignaturasAsignaturaId",
+                name: "IX_DetalleAsignaturas_AsignaturaId",
                 table: "DetalleAsignaturas",
-                column: "AsignaturasAsignaturaId");
+                column: "AsignaturaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleSeleccionAsignatura_SeleccionAsignaturasSeleccionAsignaturaId",
+                name: "IX_DetalleSeleccionAsignatura_SeleccionAsignaturaId",
                 table: "DetalleSeleccionAsignatura",
-                column: "SeleccionAsignaturasSeleccionAsignaturaId");
+                column: "SeleccionAsignaturaId");
         }
 
         /// <inheritdoc />

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_PROYECTO_APLICADO.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240618201239_Initial")]
+    [Migration("20240618202710_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -159,9 +159,6 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<int>("AsignaturaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AsignaturasAsignaturaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Aula")
                         .HasColumnType("nvarchar(max)");
 
@@ -182,7 +179,7 @@ namespace API_PROYECTO_APLICADO.Migrations
 
                     b.HasKey("DetalleAsignaturaId");
 
-                    b.HasIndex("AsignaturasAsignaturaId");
+                    b.HasIndex("AsignaturaId");
 
                     b.ToTable("DetalleAsignaturas");
                 });
@@ -204,12 +201,9 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<int>("SeleccionAsignaturaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SeleccionAsignaturasSeleccionAsignaturaId")
-                        .HasColumnType("int");
-
                     b.HasKey("DetalleSeleccionAsignaturaId");
 
-                    b.HasIndex("SeleccionAsignaturasSeleccionAsignaturaId");
+                    b.HasIndex("SeleccionAsignaturaId");
 
                     b.ToTable("DetalleSeleccionAsignatura");
                 });
@@ -567,14 +561,18 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     b.HasOne("Shared.Models.Asignaturas", null)
                         .WithMany("DetalleAsignaturas")
-                        .HasForeignKey("AsignaturasAsignaturaId");
+                        .HasForeignKey("AsignaturaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Shared.Models.DetalleSeleccionAsignatura", b =>
                 {
                     b.HasOne("Shared.Models.SeleccionAsignaturas", null)
                         .WithMany("DetalleSeleccionAsignaturas")
-                        .HasForeignKey("SeleccionAsignaturasSeleccionAsignaturaId");
+                        .HasForeignKey("SeleccionAsignaturaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Shared.Models.Asignaturas", b =>
