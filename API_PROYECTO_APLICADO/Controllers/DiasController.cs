@@ -13,7 +13,7 @@ public class DiasController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Dias>>> GetDias()
     {
-        return await _context.Dias.ToListAsync();
+        return Ok(await _context.Dias.ToListAsync());
     }
 
     // GET: api/Dias/5
@@ -27,6 +27,6 @@ public class DiasController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return dias;
+        return Ok(dias);
     }
 }

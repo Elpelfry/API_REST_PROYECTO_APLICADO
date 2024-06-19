@@ -13,7 +13,7 @@ public class ReservacionesController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Reservaciones>>> GetReservaciones()
     {
-        return await _context.Reservaciones.ToListAsync();
+        return Ok(await _context.Reservaciones.ToListAsync());
     }
 
     // GET: api/Reservaciones/5
@@ -27,7 +27,7 @@ public class ReservacionesController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return reservaciones;
+        return Ok(reservaciones);
     }
 
     // POST: api/Reservaciones
@@ -38,7 +38,7 @@ public class ReservacionesController(Contexto _context) : ControllerBase
         _context.Reservaciones.Add(reservaciones);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetReservaciones", new { id = reservaciones.ReservacionId }, reservaciones);
+        return Ok(CreatedAtAction("GetReservaciones", new { id = reservaciones.ReservacionId }, reservaciones));
     }
 
     // PUT: api/Reservaciones/5
@@ -68,7 +68,7 @@ public class ReservacionesController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // DELETE: api/Reservaciones/5
@@ -84,7 +84,7 @@ public class ReservacionesController(Contexto _context) : ControllerBase
         _context.Reservaciones.Remove(reservaciones);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool ReservacionesExists(int id)

@@ -13,7 +13,7 @@ public class TiposReservacionesController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TiposReservaciones>>> GetTiposReservaciones()
     {
-        return await _context.TiposReservaciones.ToListAsync();
+        return Ok(await _context.TiposReservaciones.ToListAsync());
     }
 
     // GET: api/TiposReservaciones/5
@@ -27,6 +27,6 @@ public class TiposReservacionesController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return tiposReservaciones;
+        return Ok(tiposReservaciones);
     }
 }

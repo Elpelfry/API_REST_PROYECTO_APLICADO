@@ -13,7 +13,7 @@ public class EstadosAdmisionsController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<EstadosAdmision>>> GetEstadosAdmicion()
     {
-        return await _context.EstadosAdmision.ToListAsync();
+        return Ok(await _context.EstadosAdmision.ToListAsync());
     }
 
     // GET: api/EstadosAdmisions/5
@@ -27,6 +27,6 @@ public class EstadosAdmisionsController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return estadosAdmision;
+        return Ok(estadosAdmision);
     }
 }

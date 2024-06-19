@@ -13,7 +13,7 @@ public class RolesController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Roles>>> GetRoles()
     {
-        return await _context.Roles.ToListAsync();
+        return Ok(await _context.Roles.ToListAsync());
     }
 
     // GET: api/Roles/5
@@ -27,6 +27,6 @@ public class RolesController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return roles;
+        return Ok(roles);
     }
 }

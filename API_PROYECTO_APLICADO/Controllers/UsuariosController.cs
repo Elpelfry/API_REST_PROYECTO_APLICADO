@@ -13,7 +13,7 @@ public class UsuariosController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Usuarios>>> GetUsuarios()
     {
-        return await _context.Usuarios.ToListAsync();
+        return Ok(await _context.Usuarios.ToListAsync());
     }
 
     // GET: api/Usuarios/5
@@ -27,7 +27,7 @@ public class UsuariosController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return usuarios;
+        return Ok(usuarios);
     }
 
     // POST: api/Usuarios
@@ -37,7 +37,7 @@ public class UsuariosController(Contexto _context) : ControllerBase
         _context.Usuarios.Add(usuarios);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetUsuarios", new { id = usuarios.UsuarioId }, usuarios);
+        return Ok(CreatedAtAction("GetUsuarios", new { id = usuarios.UsuarioId }, usuarios));
     }
 
     // PUT: api/Usuarios/5
@@ -67,7 +67,7 @@ public class UsuariosController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // DELETE: api/Usuarios/5
@@ -83,7 +83,7 @@ public class UsuariosController(Contexto _context) : ControllerBase
         _context.Usuarios.Remove(usuarios);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool UsuariosExists(int id)

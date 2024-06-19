@@ -13,7 +13,7 @@ public class SemestresController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Semestres>>> GetSemestres()
     {
-        return await _context.Semestres.ToListAsync();
+        return Ok(await _context.Semestres.ToListAsync());
     }
 
     // GET: api/Semestres/5
@@ -27,7 +27,7 @@ public class SemestresController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return semestres;
+        return Ok(semestres);
     }
 
     // POST: api/Semestres
@@ -38,7 +38,7 @@ public class SemestresController(Contexto _context) : ControllerBase
         _context.Semestres.Add(semestres);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetSemestres", new { id = semestres.SemestreId }, semestres);
+        return Ok(CreatedAtAction("GetSemestres", new { id = semestres.SemestreId }, semestres));
     }
 
     // PUT: api/Semestres/5
@@ -68,7 +68,7 @@ public class SemestresController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // DELETE: api/Semestres/5
@@ -84,7 +84,7 @@ public class SemestresController(Contexto _context) : ControllerBase
         _context.Semestres.Remove(semestres);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool SemestresExists(int id)

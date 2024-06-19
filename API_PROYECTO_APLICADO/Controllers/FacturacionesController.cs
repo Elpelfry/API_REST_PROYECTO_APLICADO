@@ -13,7 +13,7 @@ public class FacturacionesController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Facturaciones>>> GetFacturaciones()
     {
-        return await _context.Facturaciones.ToListAsync();
+        return Ok(await _context.Facturaciones.ToListAsync());
     }
 
     // GET: api/Facturaciones/5
@@ -27,7 +27,7 @@ public class FacturacionesController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return facturaciones;
+        return Ok(facturaciones);
     }
 
 
@@ -39,7 +39,7 @@ public class FacturacionesController(Contexto _context) : ControllerBase
         _context.Facturaciones.Add(facturaciones);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetFacturaciones", new { id = facturaciones.FacturacionId }, facturaciones);
+        return Ok(CreatedAtAction("GetFacturaciones", new { id = facturaciones.FacturacionId }, facturaciones));
     }
 
     // PUT: api/Facturaciones/5
@@ -69,7 +69,7 @@ public class FacturacionesController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // DELETE: api/Facturaciones/5
@@ -85,7 +85,7 @@ public class FacturacionesController(Contexto _context) : ControllerBase
         _context.Facturaciones.Remove(facturaciones);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool FacturacionesExists(int id)

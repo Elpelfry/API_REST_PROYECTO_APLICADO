@@ -13,7 +13,7 @@ public class AdmisionesController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Admisiones>>> GetAdmisiones()
     {
-        return await _context.Admisiones.ToListAsync();
+        return Ok(await _context.Admisiones.ToListAsync());
     }
 
     // GET: api/Admisiones/5
@@ -27,7 +27,7 @@ public class AdmisionesController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return admisiones;
+        return Ok(admisiones);
     }
 
     // POST: api/Admisiones
@@ -38,7 +38,7 @@ public class AdmisionesController(Contexto _context) : ControllerBase
         _context.Admisiones.Add(admisiones);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetAdmisiones", new { id = admisiones.AdmisioneId }, admisiones);
+        return Ok(CreatedAtAction("GetAdmisiones", new { id = admisiones.AdmisioneId }, admisiones));
     }
 
     // PUT: api/Admisiones/5
@@ -68,7 +68,7 @@ public class AdmisionesController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
 
@@ -85,7 +85,7 @@ public class AdmisionesController(Contexto _context) : ControllerBase
         _context.Admisiones.Remove(admisiones);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool AdmisionesExists(int id)

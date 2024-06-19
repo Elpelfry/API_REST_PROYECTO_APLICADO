@@ -13,7 +13,7 @@ public class AsignaturasController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Asignaturas>>> GetAsignaturas()
     {
-        return await _context.Asignaturas.Include(a => a.DetalleAsignaturas).ToListAsync();
+        return Ok(await _context.Asignaturas.Include(a => a.DetalleAsignaturas).ToListAsync());
     }
 
     // GET: api/Asignaturas/5
@@ -28,7 +28,7 @@ public class AsignaturasController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return asignaturas;
+        return Ok(asignaturas);
     }
 
     // POST: api/Asignaturas
@@ -39,7 +39,7 @@ public class AsignaturasController(Contexto _context) : ControllerBase
         _context.Asignaturas.Add(asignaturas);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetAsignaturas", new { id = asignaturas.AsignaturaId }, asignaturas);
+        return Ok(CreatedAtAction("GetAsignaturas", new { id = asignaturas.AsignaturaId }, asignaturas));
     }
 
     // PUT: api/Asignaturas/5
@@ -69,7 +69,7 @@ public class AsignaturasController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
 
@@ -86,7 +86,7 @@ public class AsignaturasController(Contexto _context) : ControllerBase
         _context.Asignaturas.Remove(asignaturas);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool AsignaturasExists(int id)

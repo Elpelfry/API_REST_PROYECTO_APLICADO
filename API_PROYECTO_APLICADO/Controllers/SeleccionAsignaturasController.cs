@@ -13,7 +13,7 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SeleccionAsignaturas>>> GetSeleccionAsignaturas()
     {
-        return await _context.SeleccionAsignaturas.Include(i => i.DetalleSeleccionAsignaturas).ToListAsync();
+        return Ok(await _context.SeleccionAsignaturas.Include(i => i.DetalleSeleccionAsignaturas).ToListAsync());
     }
 
     // GET: api/SeleccionAsignaturas/5
@@ -28,7 +28,7 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return seleccionAsignaturas;
+        return Ok(seleccionAsignaturas);
     }
 
     // POST: api/SeleccionAsignaturas
@@ -39,7 +39,7 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
         _context.SeleccionAsignaturas.Add(seleccionAsignaturas);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetSeleccionAsignaturas", new { id = seleccionAsignaturas.SeleccionAsignaturaId }, seleccionAsignaturas);
+        return Ok(CreatedAtAction("GetSeleccionAsignaturas", new { id = seleccionAsignaturas.SeleccionAsignaturaId }, seleccionAsignaturas));
     }
 
     // PUT: api/SeleccionAsignaturas/5
@@ -69,7 +69,7 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // DELETE: api/SeleccionAsignaturas/5
@@ -85,7 +85,7 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
         _context.SeleccionAsignaturas.Remove(seleccionAsignaturas);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool SeleccionAsignaturasExists(int id)

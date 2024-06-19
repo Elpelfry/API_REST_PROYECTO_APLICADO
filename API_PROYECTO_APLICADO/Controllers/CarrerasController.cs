@@ -13,7 +13,7 @@ public class CarrerasController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Carreras>>> GetCarreras()
     {
-        return await _context.Carreras.ToListAsync();
+        return Ok(await _context.Carreras.ToListAsync());
     }
 
     // GET: api/Carreras/5
@@ -27,7 +27,7 @@ public class CarrerasController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return carreras;
+        return Ok(carreras);
     }
 
 
@@ -39,7 +39,7 @@ public class CarrerasController(Contexto _context) : ControllerBase
         _context.Carreras.Add(carreras);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetCarreras", new { id = carreras.CarreraId }, carreras);
+        return Ok(CreatedAtAction("GetCarreras", new { id = carreras.CarreraId }, carreras));
     }
 
     // PUT: api/Carreras/5
@@ -69,7 +69,7 @@ public class CarrerasController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // DELETE: api/Carreras/5
@@ -85,7 +85,7 @@ public class CarrerasController(Contexto _context) : ControllerBase
         _context.Carreras.Remove(carreras);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool CarrerasExists(int id)
