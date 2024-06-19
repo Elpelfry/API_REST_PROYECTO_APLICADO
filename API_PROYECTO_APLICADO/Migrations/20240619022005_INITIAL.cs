@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -8,160 +9,190 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API_PROYECTO_APLICADO.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class INITIAL : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateTable(
                 name: "Admisiones",
                 columns: table => new
                 {
                     AdmisioneId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombres = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PrimerApellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SegundoApellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LugarNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CiudadNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TelefonoCasa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombres = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PrimerApellido = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    SegundoApellido = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cedula = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LugarNacimiento = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CiudadNacimiento = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Telefono = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TelefonoCasa = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CorreoElectronico = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CarreraId = table.Column<int>(type: "int", nullable: false),
-                    RecordNotas = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    ActaNacimiento = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    CertificadoMedico = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    CertificadoBachiller = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Fotografia = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Tarjetavacunacion = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RecordNotas = table.Column<byte[]>(type: "longblob", nullable: true),
+                    ActaNacimiento = table.Column<byte[]>(type: "longblob", nullable: true),
+                    CertificadoMedico = table.Column<byte[]>(type: "longblob", nullable: true),
+                    CertificadoBachiller = table.Column<byte[]>(type: "longblob", nullable: true),
+                    Fotografia = table.Column<byte[]>(type: "longblob", nullable: true),
+                    Tarjetavacunacion = table.Column<byte[]>(type: "longblob", nullable: true),
+                    Direccion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     EstadoAdmicionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admisiones", x => x.AdmisioneId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Asignaturas",
                 columns: table => new
                 {
                     AsignaturaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    CodigoMateria = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NombreMateria = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CodigoMateria = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NombreMateria = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Creditos = table.Column<int>(type: "int", nullable: false),
-                    PrecioCredito = table.Column<double>(type: "float", nullable: false),
-                    Seccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrecioCredito = table.Column<double>(type: "double", nullable: false),
+                    Seccion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CantidadEstudiantes = table.Column<int>(type: "int", nullable: false),
-                    EsLaboratorio = table.Column<bool>(type: "bit", nullable: false)
+                    EsLaboratorio = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Asignaturas", x => x.AsignaturaId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Carreras",
                 columns: table => new
                 {
                     CarreraId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Carreras", x => x.CarreraId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Dias",
                 columns: table => new
                 {
                     DiaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreDia = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    NombreDia = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dias", x => x.DiaId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "EstadosAdmision",
                 columns: table => new
                 {
                     EstadoAdmisionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Descripcion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EstadosAdmision", x => x.EstadoAdmisionId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Facturaciones",
                 columns: table => new
                 {
                     FacturacionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SemestreId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    FechaEmision = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Monto = table.Column<double>(type: "float", nullable: true),
-                    Estado = table.Column<bool>(type: "bit", nullable: false),
-                    Nota = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FechaEmision = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FechaVencimiento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    Monto = table.Column<double>(type: "double", nullable: true),
+                    Estado = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Nota = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Facturaciones", x => x.FacturacionId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Reservaciones",
                 columns: table => new
                 {
                     ReservacionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TipoReservacioneId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Estado = table.Column<bool>(type: "bit", nullable: false)
+                    Fecha = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Descripcion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Estado = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservaciones", x => x.ReservacionId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
                     RolId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RolName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    RolName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Roles", x => x.RolId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "SeleccionAsignaturas",
                 columns: table => new
                 {
                     SeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     SemestreId = table.Column<int>(type: "int", nullable: false),
-                    FechaSeleccion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Estado = table.Column<bool>(type: "bit", nullable: false),
+                    FechaSeleccion = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Estado = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CantidadCreditosPermitidos = table.Column<int>(type: "int", nullable: false),
                     CantidadCreditosSeleccionados = table.Column<int>(type: "int", nullable: false),
                     CantidadAsignaturasSeleccionadas = table.Column<int>(type: "int", nullable: false)
@@ -169,83 +200,103 @@ namespace API_PROYECTO_APLICADO.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SeleccionAsignaturas", x => x.SeleccionAsignaturaId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Semestres",
                 columns: table => new
                 {
                     SemestreId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaFin = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Estado = table.Column<bool>(type: "bit", nullable: false),
-                    CargoInscripcion = table.Column<double>(type: "float", nullable: false),
-                    FechaInicioSeleccion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaFinSeleccion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    Estado = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CargoInscripcion = table.Column<double>(type: "double", nullable: false),
+                    FechaInicioSeleccion = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FechaFinSeleccion = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Semestres", x => x.SemestreId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "TiposReservaciones",
                 columns: table => new
                 {
                     TipoReservacioneId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Descripcion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TiposReservaciones", x => x.TipoReservacioneId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RolId = table.Column<int>(type: "int", nullable: false),
                     CarreraId = table.Column<int>(type: "int", nullable: false),
                     AdmisionId = table.Column<int>(type: "int", nullable: false),
-                    Nombres = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CorreoElectronicoPersonal = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronicoInstitucional = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TelefonoCasa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Matricula = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaIngreso = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaEgreso = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FotoUsuario = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Nombres = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Apellidos = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CorreoElectronicoPersonal = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CorreoElectronicoInstitucional = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Telefono = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TelefonoCasa = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Matricula = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Direccion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cedula = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NombreUsuario = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Contrasena = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FechaIngreso = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FechaEgreso = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FotoUsuario = table.Column<byte[]>(type: "longblob", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "DetalleAsignaturas",
                 columns: table => new
                 {
                     DetalleAsignaturaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AsignaturaId = table.Column<int>(type: "int", nullable: false),
                     DiaId = table.Column<int>(type: "int", nullable: false),
-                    HoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HoraFin = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Aula = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Edificio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    HoraInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    HoraFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Aula = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Edificio = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Comentario = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -256,14 +307,15 @@ namespace API_PROYECTO_APLICADO.Migrations
                         principalTable: "Asignaturas",
                         principalColumn: "AsignaturaId",
                         onDelete: ReferentialAction.Cascade);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "DetalleSeleccionAsignatura",
                 columns: table => new
                 {
                     DetalleSeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false),
                     AsignaturaId = table.Column<int>(type: "int", nullable: false),
                     CantidadCreditos = table.Column<int>(type: "int", nullable: false)
@@ -272,12 +324,13 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     table.PrimaryKey("PK_DetalleSeleccionAsignatura", x => x.DetalleSeleccionAsignaturaId);
                     table.ForeignKey(
-                        name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_SeleccionAsignaturaId",
+                        name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_SeleccionAsi~",
                         column: x => x.SeleccionAsignaturaId,
                         principalTable: "SeleccionAsignaturas",
                         principalColumn: "SeleccionAsignaturaId",
                         onDelete: ReferentialAction.Cascade);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.InsertData(
                 table: "Dias",
