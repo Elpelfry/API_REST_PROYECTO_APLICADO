@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using API_PROYECTO_APLICADO.DAL;
 using Shared.Models;
+using Shared.Dtos;
 
 namespace API_PROYECTO_APLICADO.Controllers;
 
@@ -14,6 +15,34 @@ public class AdmisionesController(Contexto _context) : ControllerBase
     public async Task<ActionResult<IEnumerable<Admisiones>>> GetAdmisiones()
     {
         return Ok(await _context.Admisiones.ToListAsync());
+    }
+    
+    // GET: api/Admisiones
+    [HttpGet("Lite")]
+    public async Task<ActionResult<IEnumerable<AdmisionesDto>>> GetAdmisionesDto()
+    {
+        var admisiones = await _context.Admisiones
+        .Select(a => new AdmisionesDto
+        {
+            AdmisioneId = a.AdmisioneId,
+            Nombres = a.Nombres,
+            PrimerApellido = a.PrimerApellido,
+            SegundoApellido = a.SegundoApellido,
+            Cedula = a.Cedula,
+            FechaNacimiento = a.FechaNacimiento,
+            LugarNacimiento = a.LugarNacimiento,
+            CiudadNacimiento = a.CiudadNacimiento,
+            Telefono = a.Telefono,
+            TelefonoCasa = a.TelefonoCasa,
+            CorreoElectronico = a.CorreoElectronico,
+            Contrasena = a.Contrasena,
+            CarreraId = a.CarreraId,
+            Direccion = a.Direccion,
+            EstadoAdmicionId = a.EstadoAdmicionId
+        })
+        .ToListAsync();
+
+        return Ok(admisiones);
     }
 
     // GET: api/Admisiones/5
