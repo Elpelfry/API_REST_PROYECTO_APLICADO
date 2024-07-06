@@ -16,6 +16,34 @@ public class UsuariosController(Contexto _context) : ControllerBase
     {
         return Ok(await _context.Usuarios.ToListAsync());
     }
+    
+    [HttpGet("UsersLite")]
+    public async Task<ActionResult<IEnumerable<UsuarioDto>>> GetUsuariosLite()
+    {
+        var userslite = await _context.Usuarios.Select(p => new UsuarioDto
+        {
+            UsuarioId = p.UsuarioId,
+            RolId = p.RolId,
+            CarreraId = p.CarreraId,
+            AdmisionId = p.AdmisionId,
+            Nombres = p.Nombres,
+            Apellidos = p.Apellidos,
+            FechaNacimiento = p.FechaNacimiento,
+            CorreoElectronicoPersonal = p.CorreoElectronicoPersonal,
+            CorreoElectronicoInstitucional = p.CorreoElectronicoInstitucional,
+            Telefono = p.Telefono,
+            TelefonoCasa = p.TelefonoCasa,
+            Matricula = p.Matricula,
+            Direccion = p.Direccion,
+            Cedula = p.Cedula,
+            NombreUsuario = p.NombreUsuario,
+            Contrasena = p.Contrasena,
+            FechaIngreso = p.FechaIngreso,
+            FechaEgreso = p.FechaEgreso
+        }).ToListAsync();
+
+        return Ok(userslite);
+    }
 
     // GET: api/Usuarios/5
     [HttpGet("{id}")]
