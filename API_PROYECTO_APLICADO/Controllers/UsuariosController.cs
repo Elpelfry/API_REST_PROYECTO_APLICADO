@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using API_PROYECTO_APLICADO.DAL;
 using Shared.Models;
+using Shared.Dtos;
 
 namespace API_PROYECTO_APLICADO.Controllers;
 
@@ -21,6 +22,40 @@ public class UsuariosController(Contexto _context) : ControllerBase
     public async Task<ActionResult<Usuarios>> GetUsuarios(int id)
     {
         var usuarios = await _context.Usuarios.FindAsync(id);
+
+        if (usuarios == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(usuarios);
+    }
+
+    // GET: api/Usuarios/UserbyidLite/5
+    [HttpGet("UserbyidLite/{id}")]
+    public async Task<ActionResult<UsuarioDto>> GetUsuariosWhithoutImage(int id)
+    {
+        var usuarios = await _context.Usuarios.Select(u => new UsuarioDto
+        {
+            UsuarioId = u.UsuarioId,
+            RolId = u.RolId,
+            CarreraId = u.CarreraId,
+            AdmisionId = u.AdmisionId,
+            Nombres = u.Nombres,
+            Apellidos = u.Apellidos,
+            FechaNacimiento = u.FechaNacimiento,
+            CorreoElectronicoPersonal = u.CorreoElectronicoPersonal,
+            CorreoElectronicoInstitucional = u.CorreoElectronicoInstitucional,
+            Telefono = u.Telefono,
+            TelefonoCasa = u.TelefonoCasa,
+            Matricula = u.Matricula,
+            Direccion = u.Direccion,
+            Cedula = u.Cedula,
+            NombreUsuario = u.NombreUsuario,
+            Contrasena = u.Contrasena,
+            FechaIngreso = u.FechaIngreso,
+            FechaEgreso = u.FechaEgreso
+        }).FirstOrDefaultAsync(u => u.UsuarioId == id);
 
         if (usuarios == null)
         {

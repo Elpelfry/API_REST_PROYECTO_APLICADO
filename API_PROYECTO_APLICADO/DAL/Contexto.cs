@@ -37,7 +37,7 @@ public class Contexto : DbContext
 
         modelBuilder.Entity<Roles>().HasData(new List<Roles>
         {
-            new Roles { RolId = 1, RolName = "Admin" },
+            new Roles { RolId = 1, RolName = "Administrador" },
             new Roles { RolId = 2, RolName = "Estudiante" },
             new Roles { RolId = 3, RolName = "Profesor" },
             new Roles { RolId = 4, RolName = "Admisor" }
