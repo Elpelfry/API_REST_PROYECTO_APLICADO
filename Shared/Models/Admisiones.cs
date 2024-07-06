@@ -28,7 +28,7 @@ public class Admisiones
 
     public string? CorreoElectronico { get; set; }
 
-    [ForeignKey("Carrera")]
+    public string? Contraseña { get; set; }
     public int CarreraId { get; set; }
 
     public byte[]? RecordNotas { get; set; }
@@ -45,6 +45,6 @@ public class Admisiones
 
     public string? Direccion { get; set; }
 
-    [ForeignKey("EstadosAdmicion")]
+
     public int EstadoAdmicionId { get; set; }
 }

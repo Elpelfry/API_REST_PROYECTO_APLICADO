@@ -8,7 +8,7 @@ public class Asignaturas
     [Key]
     public int AsignaturaId { get; set; }
 
-    [ForeignKey("Usuarios")]
+
     public int UsuarioId { get; set; }
 
     public string? CodigoMateria { get; set; }
@@ -24,6 +24,6 @@ public class Asignaturas
     public int CantidadEstudiantes { get; set; }
 
     public bool EsLaboratorio { get; set; }
-    [ForeignKey("AsignaturaId")]
+
     public ICollection<DetalleAsignaturas> DetalleAsignaturas { get; set; } = new List<DetalleAsignaturas>();
 }

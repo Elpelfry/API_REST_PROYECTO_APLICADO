@@ -42,6 +42,8 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CorreoElectronico = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Contraseña = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CarreraId = table.Column<int>(type: "int", nullable: false),
                     RecordNotas = table.Column<byte[]>(type: "longblob", nullable: true),
                     ActaNacimiento = table.Column<byte[]>(type: "longblob", nullable: true),
@@ -296,17 +298,17 @@ namespace API_PROYECTO_APLICADO.Migrations
                     Edificio = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Comentario = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AsignaturasAsignaturaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetalleAsignaturas", x => x.DetalleAsignaturaId);
                     table.ForeignKey(
-                        name: "FK_DetalleAsignaturas_Asignaturas_AsignaturaId",
-                        column: x => x.AsignaturaId,
+                        name: "FK_DetalleAsignaturas_Asignaturas_AsignaturasAsignaturaId",
+                        column: x => x.AsignaturasAsignaturaId,
                         principalTable: "Asignaturas",
-                        principalColumn: "AsignaturaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AsignaturaId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -318,17 +320,17 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SeleccionAsignaturaId = table.Column<int>(type: "int", nullable: false),
                     AsignaturaId = table.Column<int>(type: "int", nullable: false),
-                    CantidadCreditos = table.Column<int>(type: "int", nullable: false)
+                    CantidadCreditos = table.Column<int>(type: "int", nullable: false),
+                    SeleccionAsignaturasSeleccionAsignaturaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetalleSeleccionAsignatura", x => x.DetalleSeleccionAsignaturaId);
                     table.ForeignKey(
                         name: "FK_DetalleSeleccionAsignatura_SeleccionAsignaturas_SeleccionAsi~",
-                        column: x => x.SeleccionAsignaturaId,
+                        column: x => x.SeleccionAsignaturasSeleccionAsignaturaId,
                         principalTable: "SeleccionAsignaturas",
-                        principalColumn: "SeleccionAsignaturaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "SeleccionAsignaturaId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -377,14 +379,14 @@ namespace API_PROYECTO_APLICADO.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleAsignaturas_AsignaturaId",
+                name: "IX_DetalleAsignaturas_AsignaturasAsignaturaId",
                 table: "DetalleAsignaturas",
-                column: "AsignaturaId");
+                column: "AsignaturasAsignaturaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleSeleccionAsignatura_SeleccionAsignaturaId",
+                name: "IX_DetalleSeleccionAsignatura_SeleccionAsignaturasSeleccionAsig~",
                 table: "DetalleSeleccionAsignatura",
-                column: "SeleccionAsignaturaId");
+                column: "SeleccionAsignaturasSeleccionAsignaturaId");
         }
 
         /// <inheritdoc />

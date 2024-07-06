@@ -8,10 +8,10 @@ public class Facturaciones
     [Key]
     public int FacturacionId { get; set; }
 
-    [ForeignKey("Semestres")]
+
     public int SemestreId { get; set; }
 
-    [ForeignKey("Usuarios")]
+
     public int UsuarioId { get; set; }
 
     public DateTime? FechaEmision { get; set; }

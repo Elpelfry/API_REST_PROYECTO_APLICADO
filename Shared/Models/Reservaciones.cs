@@ -8,10 +8,10 @@ public class Reservaciones
     [Key]
     public int ReservacionId { get; set; }
 
-    [ForeignKey("TiposReservaciones")]
+
     public int TipoReservacioneId { get; set; }
 
-    [ForeignKey("Usuarios")]
+
     public int UsuarioId { get; set; }
 
     public DateTime Fecha { get; set; }

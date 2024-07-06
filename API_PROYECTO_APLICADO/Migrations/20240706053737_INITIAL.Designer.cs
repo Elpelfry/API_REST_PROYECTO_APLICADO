@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_PROYECTO_APLICADO.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240619022005_INITIAL")]
+    [Migration("20240706053737_INITIAL")]
     partial class INITIAL
     {
         /// <inheritdoc />
@@ -49,6 +49,9 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasColumnType("longblob");
 
                     b.Property<string>("CiudadNacimiento")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Contraseña")
                         .HasColumnType("longtext");
 
                     b.Property<string>("CorreoElectronico")
@@ -159,6 +162,9 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<int>("AsignaturaId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("AsignaturasAsignaturaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Aula")
                         .HasColumnType("longtext");
 
@@ -179,7 +185,7 @@ namespace API_PROYECTO_APLICADO.Migrations
 
                     b.HasKey("DetalleAsignaturaId");
 
-                    b.HasIndex("AsignaturaId");
+                    b.HasIndex("AsignaturasAsignaturaId");
 
                     b.ToTable("DetalleAsignaturas");
                 });
@@ -201,9 +207,12 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<int>("SeleccionAsignaturaId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SeleccionAsignaturasSeleccionAsignaturaId")
+                        .HasColumnType("int");
+
                     b.HasKey("DetalleSeleccionAsignaturaId");
 
-                    b.HasIndex("SeleccionAsignaturaId");
+                    b.HasIndex("SeleccionAsignaturasSeleccionAsignaturaId");
 
                     b.ToTable("DetalleSeleccionAsignatura");
                 });
@@ -561,18 +570,14 @@ namespace API_PROYECTO_APLICADO.Migrations
                 {
                     b.HasOne("Shared.Models.Asignaturas", null)
                         .WithMany("DetalleAsignaturas")
-                        .HasForeignKey("AsignaturaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AsignaturasAsignaturaId");
                 });
 
             modelBuilder.Entity("Shared.Models.DetalleSeleccionAsignatura", b =>
                 {
                     b.HasOne("Shared.Models.SeleccionAsignaturas", null)
                         .WithMany("DetalleSeleccionAsignaturas")
-                        .HasForeignKey("SeleccionAsignaturaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SeleccionAsignaturasSeleccionAsignaturaId");
                 });
 
             modelBuilder.Entity("Shared.Models.Asignaturas", b =>

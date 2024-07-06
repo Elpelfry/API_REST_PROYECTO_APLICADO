@@ -8,13 +8,13 @@ public class Usuarios
     [Key]
     public int UsuarioId { get; set; }
 
-    [ForeignKey("Roles")]
+
     public int RolId { get; set; }
 
-    [ForeignKey("Carrera")]
+
     public int CarreraId { get; set; }
 
-    [ForeignKey("Admiciones")]
+
     public int AdmisionId { get; set; }
 
     public string? Nombres { get; set; }

@@ -8,10 +8,10 @@ public class DetalleAsignaturas
     [Key]
     public int DetalleAsignaturaId { get; set; }
 
-    [ForeignKey("Asignaturas")]
+
     public int AsignaturaId { get; set; }
 
-    [ForeignKey("Dias")]
+
     public int DiaId { get; set; }
 
     public DateTime HoraInicio { get; set; }
