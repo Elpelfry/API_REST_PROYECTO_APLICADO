@@ -42,7 +42,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CorreoElectronico = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Contraseña = table.Column<string>(type: "longtext", nullable: true)
+                    Contrasena = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CarreraId = table.Column<int>(type: "int", nullable: false),
                     RecordNotas = table.Column<byte[]>(type: "longblob", nullable: true),

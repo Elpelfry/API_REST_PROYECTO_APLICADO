@@ -28,7 +28,7 @@ public class Admisiones
 
     public string? CorreoElectronico { get; set; }
 
-    public string? Contraseña { get; set; }
+    public string? Contrasena { get; set; }
     public int CarreraId { get; set; }
 
     public byte[]? RecordNotas { get; set; }

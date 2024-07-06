@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_PROYECTO_APLICADO.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240706053737_INITIAL")]
+    [Migration("20240706055154_INITIAL")]
     partial class INITIAL
     {
         /// <inheritdoc />
@@ -51,7 +51,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<string>("CiudadNacimiento")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Contraseña")
+                    b.Property<string>("Contrasena")
                         .HasColumnType("longtext");
 
                     b.Property<string>("CorreoElectronico")

@@ -48,7 +48,7 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.Property<string>("CiudadNacimiento")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Contraseña")
+                    b.Property<string>("Contrasena")
                         .HasColumnType("longtext");
 
                     b.Property<string>("CorreoElectronico")
