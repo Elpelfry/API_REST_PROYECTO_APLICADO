@@ -20,7 +20,7 @@ public class Contexto : DbContext
     public DbSet<Semestres> Semestres { get; set; }
     public DbSet<TiposReservaciones> TiposReservaciones { get; set; }
     public DbSet<Usuarios> Usuarios { get; set; }
-
+    public DbSet<Configuraciones> Configuraciones { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -54,6 +54,30 @@ public class Contexto : DbContext
             new EstadosAdmision { EstadoAdmisionId = 1, Descripcion = "Pendiente" },
             new EstadosAdmision { EstadoAdmisionId = 2, Descripcion = "Aceptado" },
             new EstadosAdmision { EstadoAdmisionId = 3, Descripcion = "Rechazado" }
+        });
+
+        modelBuilder.Entity<Configuraciones>().HasData(new Configuraciones
+        {
+            ConfiguracionId = 1,
+            NombreEmpresa = "Default Company",
+            Rnc = "123456789",
+            Direccion = "Default Address",
+            Telefono = "123-456-7890",
+            PrecioCredito = 1000.0f,
+            PrecioAdmision = 500.0f,
+            PrecioInscripcion = 200.0f,
+            PorcentajeRegcargo = 10.0f,
+            EstadoRetiro = "Active",
+            EstadoInscripcion = "Open",
+            EstadoAdmision = "Open",
+            EstadoPublicacion = "Published",
+            VozLectora = "Default Voice",
+            DominioEmpresa = "defaultcompany.com",
+            URLCalendario = "http://defaultcompany.com/calendar",
+            PeriodoCalendario = "2024-2025",
+            CorreoElectronico = "info@defaultcompany.com",
+            LogoEmpresa = null,
+            LogoExtension = null
         });
     }
 }
