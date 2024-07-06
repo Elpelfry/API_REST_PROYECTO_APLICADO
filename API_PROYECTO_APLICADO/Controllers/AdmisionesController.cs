@@ -17,7 +17,7 @@ public class AdmisionesController(Contexto _context) : ControllerBase
         return Ok(await _context.Admisiones.ToListAsync());
     }
     
-    // GET: api/Admisiones
+    // GET: api/Admisiones/Lite
     [HttpGet("Lite")]
     public async Task<ActionResult<IEnumerable<AdmisionesDto>>> GetAdmisionesDto()
     {

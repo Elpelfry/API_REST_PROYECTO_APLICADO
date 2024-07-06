@@ -47,4 +47,11 @@ public class Admisiones
 
 
     public int EstadoAdmicionId { get; set; }
+
+    public string? FotoExtension { get; set; }
+    public string? TarjetavacunacionExtension { get; set; }
+    public string? CertificadoBachillerExtension { get; set; }
+    public string? CertificadoMedicoExtension { get; set; }
+    public string? ActaNacimientoExtension { get; set; }
+    public string? RecordNotasExtension { get; set; }
 }

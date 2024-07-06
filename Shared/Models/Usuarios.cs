@@ -47,4 +47,5 @@ public class Usuarios
 
     public byte[]? FotoUsuario { get; set; }
 
+    public string? FotoExtension { get; set; }
 }
