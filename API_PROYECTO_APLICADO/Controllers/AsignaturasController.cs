@@ -51,6 +51,16 @@ public class AsignaturasController(Contexto _context) : ControllerBase
             return BadRequest();
         }
 
+        await _context.DetalleAsignaturas.Where(t => t.AsignaturaId == id)
+                    .ExecuteDeleteAsync();
+
+        foreach (var item in asignaturas.DetalleAsignaturas)
+        {
+            item.DetalleAsignaturaId = 0;
+            item.AsignaturaId = id;
+            _context.DetalleAsignaturas.Add(item);
+        }
+
         _context.Entry(asignaturas).State = EntityState.Modified;
 
         try
@@ -82,6 +92,9 @@ public class AsignaturasController(Contexto _context) : ControllerBase
         {
             return NotFound();
         }
+
+        await _context.DetalleAsignaturas.Where(t => t.AsignaturaId == id)
+                   .ExecuteDeleteAsync();
 
         _context.Asignaturas.Remove(asignaturas);
         await _context.SaveChangesAsync();

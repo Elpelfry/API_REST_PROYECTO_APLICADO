@@ -44,6 +44,15 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
             return BadRequest();
         }
 
+        await _context.DetalleInventarioReservas.Where(t => t.InventarioReservaId == id)
+                    .ExecuteDeleteAsync();
+        foreach (var item in inventarioReservas.InventarioReservacionesDetalle)
+        {
+            item.DetalleInventarioReservaId = 0;
+            item.InventarioReservaId = id;
+            _context.DetalleInventarioReservas.Add(item);
+        }
+
         _context.Entry(inventarioReservas).State = EntityState.Modified;
 
         try
@@ -85,6 +94,9 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
         {
             return NotFound();
         }
+
+        await _context.DetalleInventarioReservas.Where(t => t.InventarioReservaId == id)
+                   .ExecuteDeleteAsync();
 
         _context.InventarioReservas.Remove(inventarioReservas);
         await _context.SaveChangesAsync();
