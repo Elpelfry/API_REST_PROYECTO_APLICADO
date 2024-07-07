@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shared.Models;
 
@@ -17,5 +18,6 @@ public class InventarioReservas
 
     public string? ExtensionFoto{ get; set; }
 
+    [ForeignKey("InventarioReservaId")]
     public ICollection<DetalleInventarioReserva> InventarioReservacionesDetalle { get; set; } = new List<DetalleInventarioReserva>();
 }

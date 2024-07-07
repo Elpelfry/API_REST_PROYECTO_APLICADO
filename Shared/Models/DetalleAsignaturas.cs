@@ -8,7 +8,7 @@ public class DetalleAsignaturas
     [Key]
     public int DetalleAsignaturaId { get; set; }
 
-
+    [ForeignKey("Asignaturas")]
     public int AsignaturaId { get; set; }
 
 

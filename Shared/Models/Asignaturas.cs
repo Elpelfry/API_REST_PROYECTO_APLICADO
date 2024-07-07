@@ -25,5 +25,6 @@ public class Asignaturas
 
     public bool EsLaboratorio { get; set; }
 
+    [ForeignKey("AsignaturaId")]
     public ICollection<DetalleAsignaturas> DetalleAsignaturas { get; set; } = new List<DetalleAsignaturas>();
 }
