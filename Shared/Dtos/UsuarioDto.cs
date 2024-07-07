@@ -40,4 +40,5 @@ public class UsuarioDto
     public DateTime? FechaIngreso { get; set; }
 
     public DateTime? FechaEgreso { get; set; }
+
 }

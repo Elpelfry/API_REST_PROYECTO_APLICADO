@@ -39,6 +39,6 @@ public class Configuraciones
 
     public string? CorreoElectronico { get; set; }
 
-    public byte[]? LogoEmpresa { get; set; }
+    public string? LogoEmpresa { get; set; }
     public string? LogoExtension { get; set; }
 }

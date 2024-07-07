@@ -92,7 +92,24 @@ public class UsuariosController(Contexto _context) : ControllerBase
 
         return Ok(usuarios);
     }
+    // GET: api/Usuarios/UserbyidLite/5
+    [HttpGet("UserImgID/{id}")]
+    public async Task<ActionResult<UsuarioImgDto>> GetUsuarioImage(int id)
+    {
+        var usuarios = await _context.Usuarios.Select(u => new UsuarioImgDto
+        {
+            UsuarioId = u.UsuarioId,
+            FotoUsuario = u.FotoUsuario,
+            FotoExtension = u.FotoExtension
+        }).FirstOrDefaultAsync(u => u.UsuarioId == id);
 
+        if (usuarios == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(usuarios);
+    }
     // POST: api/Usuarios
     [HttpPost]
     public async Task<ActionResult<Usuarios>> PostUsuarios(Usuarios usuarios)
