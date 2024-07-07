@@ -15,7 +15,7 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<InventarioReservas>>> GetInventarioReservas()
     {
-        return await _context.InventarioReservas.Include(p => p.InventarioReservacionesDetalle).ToListAsync();
+        return Ok(await _context.InventarioReservas.Include(p => p.InventarioReservacionesDetalle).ToListAsync());
     }
 
     // GET: api/InventarioReservas/5
@@ -31,7 +31,7 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return inventarioReservas;
+        return Ok(inventarioReservas);
     }
 
     // PUT: api/InventarioReservas/5
@@ -62,7 +62,7 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/InventarioReservas
@@ -73,7 +73,7 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
         _context.InventarioReservas.Add(inventarioReservas);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetInventarioReservas", new { id = inventarioReservas.InventarioReservaId }, inventarioReservas);
+        return Ok(CreatedAtAction("GetInventarioReservas", new { id = inventarioReservas.InventarioReservaId }, inventarioReservas));
     }
 
     // DELETE: api/InventarioReservas/5
@@ -89,7 +89,7 @@ public class InventarioReservasController(Contexto _context) : ControllerBase
         _context.InventarioReservas.Remove(inventarioReservas);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool InventarioReservasExists(int id)
