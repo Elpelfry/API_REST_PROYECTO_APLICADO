@@ -298,6 +298,33 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.ToTable("DetalleAsignaturas");
                 });
 
+            modelBuilder.Entity("Shared.Models.DetalleInventarioReserva", b =>
+                {
+                    b.Property<int>("DetalleInventarioReservaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("DetalleInventarioReservaId"));
+
+                    b.Property<DateTime>("FechaEmision")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("FechaRetorno")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("InventarioReservaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("InventarioReservasInventarioReservaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DetalleInventarioReservaId");
+
+                    b.HasIndex("InventarioReservasInventarioReservaId");
+
+                    b.ToTable("DetalleInventarioReservas");
+                });
+
             modelBuilder.Entity("Shared.Models.DetalleSeleccionAsignatura", b =>
                 {
                     b.Property<int>("DetalleSeleccionAsignaturaId")
@@ -445,6 +472,34 @@ namespace API_PROYECTO_APLICADO.Migrations
                     b.ToTable("Facturaciones");
                 });
 
+            modelBuilder.Entity("Shared.Models.InventarioReservas", b =>
+                {
+                    b.Property<int>("InventarioReservaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("InventarioReservaId"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ExtensionFoto")
+                        .HasColumnType("longtext");
+
+                    b.Property<byte[]>("FotoReserva")
+                        .HasColumnType("longblob");
+
+                    b.HasKey("InventarioReservaId");
+
+                    b.ToTable("InventarioReservas");
+                });
+
             modelBuilder.Entity("Shared.Models.Reservaciones", b =>
                 {
                     b.Property<int>("ReservacionId")
@@ -453,16 +508,19 @@ namespace API_PROYECTO_APLICADO.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ReservacionId"));
 
+                    b.Property<string>("CodigoReservacion")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Descripcion")
                         .HasColumnType("longtext");
 
-                    b.Property<bool>("Estado")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime>("Fecha")
+                    b.Property<DateTime>("FechaEmision")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("TipoReservacioneId")
+                    b.Property<DateTime>("FechaRetorno")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("InventarioReservaId")
                         .HasColumnType("int");
 
                     b.Property<int>("UsuarioId")
@@ -684,6 +742,13 @@ namespace API_PROYECTO_APLICADO.Migrations
                         .HasForeignKey("AsignaturasAsignaturaId");
                 });
 
+            modelBuilder.Entity("Shared.Models.DetalleInventarioReserva", b =>
+                {
+                    b.HasOne("Shared.Models.InventarioReservas", null)
+                        .WithMany("InventarioReservacionesDetalle")
+                        .HasForeignKey("InventarioReservasInventarioReservaId");
+                });
+
             modelBuilder.Entity("Shared.Models.DetalleSeleccionAsignatura", b =>
                 {
                     b.HasOne("Shared.Models.SeleccionAsignaturas", null)
@@ -694,6 +759,11 @@ namespace API_PROYECTO_APLICADO.Migrations
             modelBuilder.Entity("Shared.Models.Asignaturas", b =>
                 {
                     b.Navigation("DetalleAsignaturas");
+                });
+
+            modelBuilder.Entity("Shared.Models.InventarioReservas", b =>
+                {
+                    b.Navigation("InventarioReservacionesDetalle");
                 });
 
             modelBuilder.Entity("Shared.Models.SeleccionAsignaturas", b =>

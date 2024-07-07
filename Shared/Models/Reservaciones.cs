@@ -8,15 +8,16 @@ public class Reservaciones
     [Key]
     public int ReservacionId { get; set; }
 
-
-    public int TipoReservacioneId { get; set; }
-
+    public int InventarioReservaId { get; set; }
+    public string? CodigoReservacion { get; set; }
 
     public int UsuarioId { get; set; }
 
-    public DateTime Fecha { get; set; }
+    public DateTime FechaEmision { get; set; }
+
+    public DateTime FechaRetorno { get; set; }
 
     public string? Descripcion { get; set; }
 
-    public bool Estado { get; set; }
+
 }

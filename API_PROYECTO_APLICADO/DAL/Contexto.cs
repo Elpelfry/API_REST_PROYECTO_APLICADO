@@ -21,6 +21,8 @@ public class Contexto : DbContext
     public DbSet<TiposReservaciones> TiposReservaciones { get; set; }
     public DbSet<Usuarios> Usuarios { get; set; }
     public DbSet<Configuraciones> Configuraciones { get; set; }
+    public DbSet<InventarioReservas> InventarioReservas { get; set; }
+    public DbSet<DetalleInventarioReserva> DetalleInventarioReservas { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
