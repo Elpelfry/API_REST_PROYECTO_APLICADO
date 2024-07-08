@@ -16,10 +16,6 @@ public class SeleccionAsignaturas
 
     public DateTime FechaSeleccion { get; set; }
 
-    public bool Estado { get; set; }
-
-    public int CantidadCreditosPermitidos { get; set; }
-
     public int CantidadCreditosSeleccionados { get; set; }
 
     public int CantidadAsignaturasSeleccionadas { get; set; }

@@ -9,13 +9,7 @@ public class Semestres
 
     public string? Nombre{ get; set; }
 
-    public DateTime? FechaInicio { get; set; }
-
-    public DateTime? FechaFin { get; set; }
-
-    public bool Estado { get; set; }
-
-    public double CargoInscripcion { get; set; }
+    public DateTime? FechaCreacion { get; set; }
 
     public DateTime? FechaInicioSeleccion { get; set; }
 
