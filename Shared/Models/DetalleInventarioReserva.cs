@@ -14,4 +14,6 @@ public class DetalleInventarioReserva
     public DateTime FechaEmision { get; set; }
     
     public DateTime FechaRetorno { get; set; }
+
+    public bool Estado { get; set; }
 }
