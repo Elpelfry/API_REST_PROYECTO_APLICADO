@@ -9,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var ConStr = builder.Configuration.GetConnectionString("ConStr");
+
 builder.Services.AddDbContext<Contexto>(options =>
     options.UseMySql(ConStr, new MySqlServerVersion(new Version(8, 0, 30))));
 

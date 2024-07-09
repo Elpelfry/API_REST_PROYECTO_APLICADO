@@ -51,7 +51,7 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
             return BadRequest();
         }
 
-       await _context.DetalleSeleccionAsignatura.Where(t => t.SeleccionAsignaturaId == id)
+        await _context.DetalleSeleccionAsignatura.Where(t => t.SeleccionAsignaturaId == id)
                     .ExecuteDeleteAsync();
         foreach (var item in seleccionAsignaturas.DetalleSeleccionAsignaturas)
         {

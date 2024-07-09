@@ -23,6 +23,9 @@ public class Contexto : DbContext
     public DbSet<Configuraciones> Configuraciones { get; set; }
     public DbSet<InventarioReservas> InventarioReservas { get; set; }
     public DbSet<DetalleInventarioReserva> DetalleInventarioReservas { get; set; }
+    public DbSet<DetalleSemestrePlan> DetalleSemestrePlan { get; set; }
+    public DbSet<SemestrePlan> SemestrePlan { get; set; }
+    public DbSet<DetalleDetalleSemestrePlan> DetalleDetalleSemestrePlan { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -81,5 +84,17 @@ public class Contexto : DbContext
             LogoEmpresa = null,
             LogoExtension = null
         });
+
+        modelBuilder.Entity<SemestrePlan>()
+            .HasMany(sp => sp.DetalleSemestrePlan)
+            .WithOne()
+            .HasForeignKey(dsp => dsp.SemestrePlanId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<DetalleSemestrePlan>()
+            .HasMany(dsp => dsp.DetalleDetalleSemestrePlan)
+            .WithOne()
+            .HasForeignKey(ddsp => ddsp.DetalleSemestrePlanId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
