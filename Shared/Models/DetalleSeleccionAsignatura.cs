@@ -11,8 +11,9 @@ public class DetalleSeleccionAsignatura
     [ForeignKey("SeleccionAsignaturas")]
     public int SeleccionAsignaturaId { get; set; }
 
+    public int DetalleDetalleSemestrePlanId { get; set; }
 
-    public int AsignaturaId { get; set; }
+    public float Calificacion { get; set; }
 
-    public int CantidadCreditos { get; set; }
+    public int Creditos { get; set; }
 }
