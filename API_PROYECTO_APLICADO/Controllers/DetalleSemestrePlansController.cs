@@ -27,7 +27,7 @@ public class DetalleSemestrePlansController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return detalleSemestrePlan;
+        return Ok(detalleSemestrePlan);
     }
 
     // PUT: api/DetalleSemestrePlans/5
@@ -69,7 +69,7 @@ public class DetalleSemestrePlansController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/DetalleSemestrePlans
@@ -80,7 +80,7 @@ public class DetalleSemestrePlansController(Contexto _context) : ControllerBase
         _context.DetalleSemestrePlan.Add(detalleSemestrePlan);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetDetalleSemestrePlan", new { id = detalleSemestrePlan.DetalleSemestrePlanId }, detalleSemestrePlan);
+        return Ok(CreatedAtAction("GetDetalleSemestrePlan", new { id = detalleSemestrePlan.DetalleSemestrePlanId }, detalleSemestrePlan));
     }
 
     // DELETE: api/DetalleSemestrePlans/5
@@ -100,7 +100,7 @@ public class DetalleSemestrePlansController(Contexto _context) : ControllerBase
         _context.DetalleSemestrePlan.Remove(detalleSemestrePlan);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool DetalleSemestrePlanExists(int id)

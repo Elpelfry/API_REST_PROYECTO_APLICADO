@@ -13,10 +13,10 @@ public class SemestrePlansController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SemestrePlan>>> GetSemestrePlan()
     {
-        return await _context.SemestrePlan.
+        return Ok(await _context.SemestrePlan.
             Include(d => d.DetalleSemestrePlan)
                 .ThenInclude(dd => dd.DetalleDetalleSemestrePlan).
-            ToListAsync();
+            ToListAsync());
     }
 
     // GET: api/SemestrePlans/5
@@ -33,7 +33,7 @@ public class SemestrePlansController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return semestrePlan;
+        return Ok(semestrePlan);
     }
 
     // PUT: api/SemestrePlans/5
@@ -86,7 +86,7 @@ public class SemestrePlansController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/SemestrePlans
@@ -96,7 +96,7 @@ public class SemestrePlansController(Contexto _context) : ControllerBase
         _context.SemestrePlan.Add(semestrePlan);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetSemestrePlan", new { id = semestrePlan.SemestrePlanId }, semestrePlan);
+        return Ok(CreatedAtAction("GetSemestrePlan", new { id = semestrePlan.SemestrePlanId }, semestrePlan));
     }
 
     // DELETE: api/SemestrePlans/5
@@ -116,7 +116,7 @@ public class SemestrePlansController(Contexto _context) : ControllerBase
         _context.SemestrePlan.Remove(semestrePlan);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool SemestrePlanExists(int id)
