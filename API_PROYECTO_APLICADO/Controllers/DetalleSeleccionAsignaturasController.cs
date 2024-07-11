@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using API_PROYECTO_APLICADO.DAL;
 using Shared.Models;
+using Shared.Dtos;
 
 namespace API_PROYECTO_APLICADO.Controllers;
 
@@ -23,7 +24,7 @@ public class DetalleSeleccionAsignaturasController(Contexto _context) : Controll
 
         return Ok(detalleSeleccionAsignatura);
     }
-
+    
     // PUT: api/DetalleSeleccionAsignaturas/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutDetalleSeleccionAsignatura(int id, DetalleSeleccionAsignatura detalleSeleccionAsignatura)
@@ -62,6 +63,22 @@ public class DetalleSeleccionAsignaturasController(Contexto _context) : Controll
         await _context.SaveChangesAsync();
 
         return Ok(CreatedAtAction("GetDetalleSeleccionAsignatura", new { id = detalleSeleccionAsignatura.DetalleSeleccionAsignaturaId }, detalleSeleccionAsignatura));
+    }
+    [HttpPatch("{estado}/{id}")]
+    public async Task<ActionResult> ModificarDetalleEstado( string estado, int id)
+    {
+        var detalleSeleccionAsignatura = await _context.DetalleSeleccionAsignatura.FindAsync(id);
+
+        if (detalleSeleccionAsignatura == null)
+        {
+            return NotFound();
+        }
+
+        detalleSeleccionAsignatura.Estado = estado;
+        _context.Entry(detalleSeleccionAsignatura).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
+        return Ok(detalleSeleccionAsignatura);
     }
 
     // DELETE: api/DetalleSeleccionAsignaturas/5

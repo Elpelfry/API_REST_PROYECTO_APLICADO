@@ -41,7 +41,23 @@ public class SeleccionAsignaturasController(Contexto _context) : ControllerBase
 
         return Ok(CreatedAtAction("GetSeleccionAsignaturas", new { id = seleccionAsignaturas.SeleccionAsignaturaId }, seleccionAsignaturas));
     }
+    [HttpPatch("{estado}/{id}")]
+    public async Task<ActionResult> ModificarEstado(string estado, int id)
+    {
+        var SeleccionAsignatura = await _context.SeleccionAsignaturas.Include(s => s.DetalleSeleccionAsignaturas)
+            .FirstOrDefaultAsync(a => a.SeleccionAsignaturaId == id);
 
+        if (SeleccionAsignatura == null)
+        {
+            return NotFound();
+        }
+
+        SeleccionAsignatura.Estado = estado;
+        _context.Entry(SeleccionAsignatura).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
+        return Ok(SeleccionAsignatura);
+    }
     // PUT: api/SeleccionAsignaturas/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutSeleccionAsignaturas(int id, SeleccionAsignaturas seleccionAsignaturas)
