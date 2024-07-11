@@ -19,5 +19,5 @@ public class Reservaciones
 
     public string? Descripcion { get; set; }
 
-
+    public string? Estado { get; set; }
 }
