@@ -9,6 +9,7 @@ public class SeleccionAsignaturas
     [Key]
     public int SeleccionAsignaturaId { get; set; }
 
+    public string? Estado { get; set; }
 
     public int UsuarioId { get; set; }
 

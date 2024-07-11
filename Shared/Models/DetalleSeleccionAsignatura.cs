@@ -16,4 +16,6 @@ public class DetalleSeleccionAsignatura
     public float Calificacion { get; set; }
 
     public int Creditos { get; set; }
+
+    public string? Estado { get; set; }
 }
