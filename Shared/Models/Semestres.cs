@@ -16,4 +16,5 @@ public class Semestres
     public DateTime? FechaFinSeleccion { get; set; }
 
     public DateTime? FechaRetiro { get; set; }
+    public DateTime? FechaFinSemestre { get; set; }
 }
