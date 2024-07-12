@@ -81,6 +81,24 @@ public class DetalleSeleccionAsignaturasController(Contexto _context) : Controll
         return Ok(detalleSeleccionAsignatura);
     }
 
+    [HttpPatch("CambiarEstadoNota/{id}")]
+    public async Task<ActionResult> ModificarCalificacionEstado(int id, DetalleSeleccionAsignaturaDto detalle)
+    {
+        var detalleSeleccionAsignatura = await _context.DetalleSeleccionAsignatura.FindAsync(id);
+
+        if (detalleSeleccionAsignatura == null)
+        {
+            return NotFound();
+        }
+
+        detalleSeleccionAsignatura.Calificacion = detalle.Calificacion;
+        detalleSeleccionAsignatura.Estado = detalle.Estado;
+        _context.Entry(detalleSeleccionAsignatura).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
+        return Ok(detalleSeleccionAsignatura);
+    }
+
     // DELETE: api/DetalleSeleccionAsignaturas/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDetalleSeleccionAsignatura(int id)
