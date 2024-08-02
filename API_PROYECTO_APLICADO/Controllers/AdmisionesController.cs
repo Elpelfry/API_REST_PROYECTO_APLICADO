@@ -10,6 +10,17 @@ namespace API_PROYECTO_APLICADO.Controllers;
 [ApiController]
 public class AdmisionesController(Contexto _context) : ControllerBase
 {
+
+    [HttpPost("/admin2")]
+    public async Task<ActionResult<Admisiones>> PostAdmisioness(Admisiones admisiones)
+    {
+        admisiones.AdmisioneId = 0;
+        _context.Admisiones.Add(admisiones);
+        await _context.SaveChangesAsync();
+
+        return Ok(CreatedAtAction("GetAdmisiones", new { id = admisiones.AdmisioneId }, admisiones));
+    }
+
     // GET: api/Admisiones
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Admisiones>>> GetAdmisiones()
